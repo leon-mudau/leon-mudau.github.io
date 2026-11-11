@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leon Mudau | Data Analyst</title>
+<meta name="description" content="Leon Mudau, data analyst in Johannesburg. SQL, Python, Power BI and Excel. Six years turning messy data into reports, dashboards and automated tools.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f7fa; --surface: #ffffff; --text: #16202c; --muted: #5a6677;
+    --line: #e2e7ee; --accent: #2b5d8c; --accent-2: #4a86b8; --accent-soft: #e8f0f8; --chip: #edf2f8;
+    --hero-1: #16314d; --hero-2: #2b5d8c; --shadow: 0 1px 2px rgba(16,32,52,.06), 0 8px 24px rgba(16,32,52,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0d131b; --surface: #141c27; --text: #e7edf4; --muted: #9caabb;
+      --line: #243042; --accent: #7db6e3; --accent-2: #9cc8ec; --accent-soft: #182839; --chip: #1c2735;
+      --hero-1: #0f2236; --hero-2: #1d4366; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25); }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; font-size: 16px; -webkit-font-smoothing: antialiased; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+  nav { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--hero-1) 92%, transparent);
+    backdrop-filter: blur(10px); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  nav .brand { font-weight: 700; color: #fff; letter-spacing: .2px; }
+  nav ul { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; }
+  nav ul a { color: rgba(255,255,255,.78); font-weight: 500; font-size: 15px; }
+  nav ul a:hover { color: #fff; text-decoration: none; }
+
+  header.hero { background: linear-gradient(135deg, var(--hero-1), var(--hero-2)); color: #fff; padding: 64px 0 40px; position: relative; overflow: hidden; }
+  header.hero::after { content: ""; position: absolute; right: -120px; top: -120px; width: 420px; height: 420px;
+    border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.10), transparent 70%); }
+  .hero-grid { display: grid; grid-template-columns: 200px 1fr; gap: 44px; align-items: center; position: relative; z-index: 1; }
+  .photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid rgba(255,255,255,.9);
+    box-shadow: 0 12px 30px rgba(0,0,0,.25); }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+    color: #cfe3f5; margin-bottom: 8px; }
+  .hero h1 { font-size: 46px; line-height: 1.1; margin: 0 0 12px; letter-spacing: -.5px; }
+  .hero .tag { font-size: 18px; color: rgba(255,255,255,.85); margin: 0 0 22px; max-width: 640px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-block; padding: 10px 18px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--text); font-weight: 600; font-size: 15px; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); box-shadow: var(--shadow); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .hero .btn { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.35); color: #fff; }
+  .hero .btn.primary { background: #fff; border-color: #fff; color: var(--hero-1); }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 44px; position: relative; z-index: 1; }
+  .stat { background: rgba(255,255,255,.10); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 16px 18px; }
+  .stat b { display: block; font-size: 24px; color: #fff; line-height: 1.25; }
+  .stat span { font-size: 14px; color: rgba(255,255,255,.75); }
+
+  section { padding: 64px 0; }
+  section:nth-of-type(even) { background: var(--surface); }
+  .label { font-size: 13px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent-2); margin: 0 0 6px; }
+  section h2 { font-size: 30px; margin: 0 0 28px; letter-spacing: -.3px; }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 24px;
+    display: flex; flex-direction: column; box-shadow: var(--shadow); transition: transform .15s, box-shadow .15s; }
+  section:nth-of-type(even) .card { background: var(--bg); box-shadow: none; }
+  .card:hover { transform: translateY(-2px); }
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .card .kind { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .8px; }
+  .card h3 { margin: 6px 0 8px; font-size: 19px; line-height: 1.35; }
+  .card p { margin: 0 0 16px; color: var(--muted); font-size: 15px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: auto 0 14px; }
+  .chip { background: var(--chip); border-radius: 999px; padding: 4px 11px; font-size: 13px; color: var(--muted); font-weight: 500; }
+  .card .links { display: flex; gap: 14px; font-size: 15px; font-weight: 600; }
+  .card.soon { border-style: dashed; }
+
+  .offer { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .offer .card h3 { font-size: 17px; margin-top: 0; }
+  .offer .card p { margin: 0; }
+  .icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent);
+    display: grid; place-items: center; margin-bottom: 14px; }
+  .icon svg { width: 22px; height: 22px; }
+
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skills .card h3 { font-size: 16px; margin-top: 0; margin-bottom: 12px; }
+  .skills .chips { margin: 0; }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--line); }
+  .timeline li { position: relative; display: grid; grid-template-columns: 160px 1fr; gap: 20px; padding: 0 0 26px 18px; }
+  .timeline li::before { content: ""; position: absolute; left: -30px; top: 6px; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+  .when { color: var(--muted); font-size: 14px; font-weight: 600; }
+  .timeline h3 { margin: 0; font-size: 17px; }
+  .timeline .org { color: var(--muted); font-size: 15px; margin: 2px 0 6px; }
+  .timeline p { margin: 0; font-size: 15px; }
+
+  .contact-box { background: linear-gradient(135deg, var(--hero-1), var(--hero-2)); color: #fff; border-radius: 18px;
+    padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .contact-box h2 { margin: 0 0 8px; color: #fff; }
+  .contact-box p { margin: 0; color: rgba(255,255,255,.82); max-width: 560px; }
+  .contact-box .btn { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.35); color: #fff; }
+  .contact-box .btn.primary { background: #fff; border-color: #fff; color: var(--hero-1); }
+  footer { padding: 26px 0 40px; color: var(--muted); font-size: 14px; text-align: center; }
+
+  @media (max-width: 760px) {
+    nav ul { gap: 14px; } nav ul li.hide-sm { display: none; }
+    header.hero { padding: 40px 0 28px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 22px; text-align: center; justify-items: center; }
+    .hero .btns { justify-content: center; }
+    .photo { width: 150px; height: 150px; }
+    .hero h1 { font-size: 34px; }
+    .cards, .skills, .offer { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .timeline li { grid-template-columns: 1fr; gap: 2px; }
+    .contact-box { padding: 28px; }
+    section { padding: 48px 0; }
+  }
+  .c1{--c:#2b7fd4}.c2{--c:#16a37f}.c3{--c:#f0a020}.c4{--c:#e0607e}.c5{--c:#7b61d1}.c6{--c:#18a3b8}.c7{--c:#e57a3a}.c8{--c:#5a8f29}
+  .donuts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 26px; }
+  .donut-card { text-align: center; padding: 22px 16px; }
+  .donut { --p: 0; width: 120px; height: 120px; margin: 0 auto 12px; border-radius: 50%;
+    background: conic-gradient(var(--c) calc(var(--p) * 1%), var(--chip) 0); display: grid; place-items: center; position: relative; }
+  .donut::before { content: ""; position: absolute; inset: 14px; border-radius: 50%; background: var(--surface); }
+  section:nth-of-type(even) .donut::before { background: var(--bg); }
+  .donut span { position: relative; font-size: 26px; font-weight: 700; color: var(--text); }
+  .donut-card h3 { font-size: 16px; margin: 0 0 2px; }
+  .donut-card p { margin: 0; font-size: 13px; }
+  .bars-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .bar { margin-bottom: 16px; }
+  .bar:last-child { margin-bottom: 0; }
+  .bar .row { display: flex; justify-content: space-between; font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .bar .row em { font-style: normal; color: var(--c); }
+  .track { height: 10px; border-radius: 999px; background: var(--chip); overflow: hidden; }
+  .fill { height: 100%; width: calc(var(--p) * 1%); border-radius: 999px;
+    background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 65%, #fff)); }
+  .note { font-size: 13px; color: var(--muted); margin: 14px 0 0; }
+  @media (max-width: 760px) { .donuts { grid-template-columns: repeat(2, 1fr); } .bars-grid { grid-template-columns: 1fr; } .donut { width: 100px; height: 100px; } }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+  .col-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .col-head .icon { margin: 0; }
+  .col-head h3 { margin: 0; font-size: 19px; }
+  .two-col .timeline { padding-left: 18px; border-left: 2px solid color-mix(in srgb, var(--c) 30%, var(--line)); }
+  .two-col .timeline li { display: block; padding: 0 0 22px 16px; }
+  .two-col .timeline li:last-child { padding-bottom: 4px; }
+  .two-col .timeline li::before { left: -25px; top: 5px; background: var(--c); box-shadow: 0 0 0 4px color-mix(in srgb, var(--c) 18%, transparent); }
+  .two-col .when { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .4px; color: var(--c);
+    background: color-mix(in srgb, var(--c) 12%, transparent); border-radius: 999px; padding: 2px 10px; margin-bottom: 6px; }
+  .two-col .timeline p { color: var(--muted); }
+  .hl { color: var(--c); }
+  .certs { margin-top: 18px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .certs h4 { margin: 0 0 12px; font-size: 15px; }
+  .cert { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 15px; }
+  .cert small { color: var(--muted); font-size: 13px; }
+  .badge { font-size: 12px; font-weight: 700; border-radius: 8px; padding: 6px 9px; }
+  @media (max-width: 760px) { .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Leon Mudau</a>
+    <ul>
+      <li class="hide-sm"><a href="#what">What I do</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li class="hide-sm"><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <img class="photo" src="https://github.com/leon-mudau.png?size=400" alt="Leon Mudau" width="200" height="200">
+      <div>
+        <span class="eyebrow">Data &amp; Analytics</span>
+        <h1>Leon Mudau</h1>
+        <p class="tag">Data analyst based in Johannesburg. I take messy data from several systems, clean and check it, and turn it into dashboards, reports and automated tools that people actually use.</p>
+        <div class="btns">
+          <a class="btn primary" href="#projects">See my work</a>
+          <a class="btn" href="https://www.linkedin.com/in/leonmudau" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/leon-mudau" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b style="color:#7fe0c0">6 years</b><span>working with data at Wits University</span></div>
+      <div class="stat"><b style="color:#9ccaf5">SQL &middot; Python</b><span>Power BI, Excel, R and Alteryx</span></div>
+      <div class="stat"><b style="color:#ffd27a">76%</b><span>MEng average, built on statistics and experimental design</span></div>
+      <div class="stat"><b style="color:#ffaabd">Hours saved</b><span>by automating manual data capture</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="what">
+  <div class="wrap">
+    <p class="label">Services</p>
+    <h2>What I do</h2>
+    <div class="offer">
+      <div class="card"><div class="icon c2" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6c0-1.1 3.6-2 8-2s8 .9 8 2-3.6 2-8 2-8-.9-8-2Zm0 0v6c0 1.1 3.6 2 8 2s8-.9 8-2V6M4 12v6c0 1.1 3.6 2 8 2s8-.9 8-2v-6"/></svg></div><h3>Clean, reliable data</h3><p>Combine data from different systems, profile it, fix errors and duplicates, and check every figure against its source before it reaches a report.</p></div>
+      <div class="card"><div class="icon c3" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Dashboards and reports</h3><p>Build Power BI dashboards and Excel reports that answer the questions managers actually ask, and explain the findings in plain language.</p></div>
+      <div class="card"><div class="icon c1" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></div><h3>Automation</h3><p>Write Python and SQL that replaces repetitive manual work, such as pulling figures out of PDFs or reconciling records, so teams spend time on decisions instead.</p></div>
+      <div class="card"><div class="icon c4" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8M14 7h7v7"/></svg></div><h3>Analysis and statistics</h3><p>Regression, correlation, design of experiments and predictive models, from academic research through to survey and performance data.</p></div>
+      <div class="card"><div class="icon c5" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm13 10v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div><h3>Working with stakeholders</h3><p>Work out what each report needs to answer, who reads it and how often, then deliver it on time to management and external sponsors.</p></div>
+      <div class="card"><div class="icon c6" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.3-4.3M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z"/></svg></div><h3>Currently exploring</h3><p>Machine learning, natural language processing and semantic search, applied to large collections of documents such as South African water sector reports.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <p class="label">Selected work</p>
+    <h2>Projects</h2>
+    <div class="cards">
+
+      <article class="card">
+        <span class="kind">Automation &middot; Python</span>
+        <h3>Fee Statement Processor</h3>
+        <p>Reads batches of PDF fee statements, extracts the key figures, matches each one to the right row in an Excel workbook and flags mismatches, missing records and duplicates. Replaced hours of manual copying for a university funding team. Runs as an offline desktop app, a Streamlit web app or from the command line, with sample data and unit tests.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">PDF extraction</span><span class="chip">openpyxl</span><span class="chip">Streamlit</span><span class="chip">pytest</span></div>
+        <div class="links"><a href="https://github.com/leon-mudau/fee-statement-processor" target="_blank" rel="noopener">View code &rarr;</a></div>
+      </article>
+
+      <article class="card">
+        <span class="kind">BI &middot; Dashboards</span>
+        <h3>Student programme analytics at Wits</h3>
+        <p>Power BI dashboards and reports on programme participation, attendance, survey feedback, student performance and bursary progress, used by programme teams and senior leadership. Built on data combined from several internal systems and validated against source records.</p>
+        <div class="chips"><span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">SQL</span><span class="chip">Monitoring &amp; evaluation</span></div>
+      </article>
+
+      <article class="card">
+        <span class="kind">Analysis &middot; BI</span>
+        <h3>Sales performance analysis</h3>
+        <p>A sales KPI report covering revenue, margins, category and regional performance, and customer segmentation, from data preparation through to an interactive dashboard.</p>
+        <div class="chips"><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Alteryx</span><span class="chip">Power BI</span></div>
+        <div class="links"><a href="https://www.datascienceportfol.io/leonmudau" target="_blank" rel="noopener">View report &rarr;</a></div>
+      </article>
+
+      <article class="card">
+        <span class="kind">Analysis &middot; Python</span>
+        <h3>Student habits vs academic performance</h3>
+        <p>Explored how study time, attendance, sleep and extracurricular activities relate to results and pass rates using a public Kaggle dataset, and presented the findings in a dashboard.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Excel</span><span class="chip">Power BI</span></div>
+        <div class="links"><a href="https://www.datascienceportfol.io/leonmudau" target="_blank" rel="noopener">View report &rarr;</a></div>
+      </article>
+
+      <article class="card">
+        <span class="kind">Statistics &middot; Research</span>
+        <h3>Process optimisation with design of experiments</h3>
+        <p>For my MEng, designed experiments and used statistical modelling to find the operating conditions that gave the best results for a mine water treatment process, then confirmed them in pilot trials at two treatment works. Presented at an international conference in Lisbon.</p>
+        <div class="chips"><span class="chip">Design of experiments</span><span class="chip">Regression</span><span class="chip">Design-Expert</span><span class="chip">OriginPro</span></div>
+      </article>
+
+      <article class="card">
+        <span class="kind">Predictive modelling</span>
+        <h3>Forecasting contaminant trends in water</h3>
+        <p>Worked with Rand Water monitoring data, used correlation analysis to explain what drove contaminant persistence, and built models to forecast contaminant trends across treatment sites.</p>
+        <div class="chips"><span class="chip">Correlation analysis</span><span class="chip">Predictive models</span><span class="chip">Water quality data</span></div>
+      </article>
+
+      <article class="card">
+        <span class="kind">Web app &middot; contributor</span>
+        <h3>Wits CSD Events &amp; Engagement Platform</h3>
+        <p>Contributed to a production web app for student events, including QR check-in, registrations, targeted announcements and admin activity logs, backed by a PostgreSQL database.</p>
+        <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">Supabase</span><span class="chip">TypeScript</span><span class="chip">Next.js</span></div>
+        <div class="links"><a href="https://github.com/leon-mudau/conveo-2" target="_blank" rel="noopener">View code &rarr;</a></div>
+      </article>
+
+      <article class="card soon">
+        <span class="kind">In progress &middot; NLP</span>
+        <h3>Water report search</h3>
+        <p>A search tool over South African water sector reports, combining PDF text extraction, natural language processing and semantic search, so people can find what past reports say about a topic in seconds.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">NLP</span><span class="chip">Semantic search</span><span class="chip">RAG</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <p class="label">Toolkit</p>
+    <h2>Skills</h2>
+    <div class="donuts">
+      <div class="card donut-card c2"><div class="donut" style="--p:90"><span>90%</span></div><h3>Excel</h3><p class="muted" style="color:var(--muted)">Power Query, pivots, lookups</p></div>
+      <div class="card donut-card c3"><div class="donut" style="--p:85"><span>85%</span></div><h3>Power BI</h3><p class="muted" style="color:var(--muted)">Dashboards and reports</p></div>
+      <div class="card donut-card c1"><div class="donut" style="--p:80"><span>80%</span></div><h3>SQL</h3><p class="muted" style="color:var(--muted)">SQL Server, PostgreSQL</p></div>
+      <div class="card donut-card c5"><div class="donut" style="--p:75"><span>75%</span></div><h3>Python</h3><p class="muted" style="color:var(--muted)">pandas, automation</p></div>
+    </div>
+    <div class="bars-grid">
+      <div class="card">
+        <h3 style="margin-top:0">Analysis</h3>
+        <div class="bar c2" style="--p:90"><div class="row"><span>Data cleaning &amp; validation</span><em>90%</em></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar c3" style="--p:85"><div class="row"><span>Reporting &amp; data storytelling</span><em>85%</em></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar c4" style="--p:80"><div class="row"><span>Statistics &amp; regression</span><em>80%</em></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar c6" style="--p:75"><div class="row"><span>Design of experiments</span><em>75%</em></div><div class="track"><div class="fill"></div></div></div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Tools</h3>
+        <div class="bar c7" style="--p:65"><div class="row"><span>Alteryx</span><em>65%</em></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar c8" style="--p:60"><div class="row"><span>R</span><em>60%</em></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar c1" style="--p:65"><div class="row"><span>Git &amp; GitHub</span><em>65%</em></div><div class="track"><div class="fill"></div></div></div>
+        <div class="bar c5" style="--p:45"><div class="row"><span>Machine learning &amp; NLP</span><em>45%</em></div><div class="track"><div class="fill"></div></div></div>
+      </div>
+    </div>
+    <p class="note">Self-assessed levels.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="label">Background</p>
+    <h2>Experience &amp; qualifications</h2>
+    <div class="two-col">
+      <div class="col-card card">
+        <div class="col-head"><div class="icon c1" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><h3>Work experience</h3></div>
+        <ul class="timeline c1">
+          <li><span class="when">Jan 2026 to now</span><h3>Data and Reporting Officer</h3><div class="org">AngloGold Ashanti Legacy Scholarship Programme &middot; Wits University</div><p>Integrate and validate student data from several systems, automate data capture, and produce the reports management and the sponsor rely on.</p></li>
+          <li><span class="when">2024 to 2025</span><h3>Data Administrator</h3><div class="org">Centre for Student Development &middot; Wits University</div><p>Combined and cleaned large recurring datasets, built dashboards and reports for senior leadership, and checked every report against source data.</p></li>
+          <li><span class="when">2020 to 2023</span><h3>Project Assistant</h3><div class="org">Development and Leadership Unit &middot; Wits University</div><p>Analysed survey and performance data, supported monitoring and evaluation, and trained colleagues in spreadsheet and data tools.</p></li>
+          <li><span class="when">2022</span><h3>Laboratory Demonstrator</h3><div class="org">School of Chemistry &middot; Wits University</div><p>Supervised undergraduate lab sessions and helped students interpret experimental data.</p></li>
+        </ul>
+      </div>
+      <div class="col-card card">
+        <div class="col-head"><div class="icon c2" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div><h3>Qualifications</h3></div>
+        <ul class="timeline c2">
+          <li><span class="when">2024 to 2025</span><h3>Master of Engineering, Extraction Metallurgy</h3><div class="org">University of Johannesburg &middot; <b class='hl'>76% average</b></div><p>Research built on experimental design, statistical modelling and large instrumental datasets. Presented in Lisbon, 2025.</p></li>
+          <li><span class="when">2022</span><h3>BSc Honours in Chemistry</h3><div class="org">University of the Witwatersrand</div><p>Research project with Rand Water on heavy metals in water sources, including predictive models of contaminant trends.</p></li>
+          <li><span class="when">2018 to 2020</span><h3>Bachelor of Science</h3><div class="org">University of the Witwatersrand</div><p>Biological Sciences major, with Chemistry to third year.</p></li>
+        </ul>
+        <div class="certs">
+          <h4>Certifications</h4>
+          <div class="cert"><span class="badge c5" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)">2023</span><div><b>Data Analysis with Python</b><br><small>freeCodeCamp</small></div></div>
+          <div class="cert"><span class="badge c3" style="background:color-mix(in srgb,var(--c) 14%,transparent);color:var(--c)">2023</span><div><b>Project Management Foundations</b><br><small>LinkedIn Learning</small></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <div>
+        <h2>Get in touch</h2>
+        <p>Happy to talk about data, reporting, automation or anything on this page. The easiest way to reach me is on LinkedIn.</p>
+      </div>
+      <div class="btns">
+        <a class="btn primary" href="https://www.linkedin.com/in/leonmudau" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a class="btn" href="https://github.com/leon-mudau" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">&copy; 2026 Leon Mudau &middot; Johannesburg, South Africa</div>
+</footer>
+
+</body>
+</html>
